@@ -1,2 +1,0 @@
-# IPIP-DB
-IPIP-DB
