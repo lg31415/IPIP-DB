@@ -1,0 +1,24 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import re
+# soucefile = open('tj.xml','r')
+# desfile = open('new-3.js','r')
+# newfile = open('new-all.js','w')
+def changefile(soucefile,desfile,newfile):
+    destext=desfile.read()
+    #print soucefile.readlines()
+    for text in  soucefile.readlines():
+        chart=text.replace('<row><area_name>','').replace('</area_name></row>','').replace('\n','')
+        schart='"'+chart+'",'
+        pchart=re.compile('"'+chart+'.{1,8}",')
+        destext=re.sub(pchart,schart,destext)
+    newfile.write(destext)
+    soucefile.close()
+    desfile.close()
+    newfile.close()
+file1=raw_input('please input the Sourcefile：')
+file2=raw_input('please input the Desfile：')
+file3=raw_input('please input the Lastfile：')
+changefile(file1,file2,file3)
+
+
